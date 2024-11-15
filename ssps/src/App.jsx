@@ -3,7 +3,7 @@ import Navbar from './component/Navbar'
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
       <Navbar/>
     </div>
   )
