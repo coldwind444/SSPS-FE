@@ -4,7 +4,7 @@ import Navbar from '../../component/NavigationBar/Navbar'
 const Homepage = () => {
   return (
     <div>
-        <Navbar/>
+        
     </div>
   )
 }
