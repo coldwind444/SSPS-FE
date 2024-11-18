@@ -1,39 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { asset } from '../../assets/asset';
-import './Navbar.css';
+import classNames from 'classnames/bind';
+import styles from './Navbar.module.css';
 import { Link } from 'react-router-dom';
-function Navbar() {
- const [menu,setMenu]=useState("Trang chủ")
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+
+const clx = classNames.bind(styles)
+
+function Navbar({isAuthenticated, userType, userName}) {
+
+  const [menu,setMenu]=useState("Trang chủ")
 
   return (
-    <div className="navbar">
-      <div className="navbar-left">
-        <img src={asset.logo} alt="BK-SSPS logo" className="logo" />
-        <span className="navbar-brand">BK-SSPS</span>
+    <div className={clx("navbar")}>
+      <div className={clx("navbar-left")}>
+        <img src={asset.logo} alt="BK-SSPS logo" className={clx("logo")} />
+        <span className={clx("navbar-brand", 'primary-text')}>BK-</span>
+        <span className={clx("navbar-brand", 'dark-text')}>SSPS</span>
       </div>
-      <ul className="navbar-center">
-         <Link to='/homepage' >
-         <li onClick={()=>setMenu("Trang chủ")} className={menu=="Trang chủ"?"active":""}> Trang chủ</li>
-         </Link>
-         <Link to='/printing' >
-         <li onClick={()=>setMenu("In tài liệu")} className={menu=="In tài liệu"?"active":""}>In tài liệu</li> 
-         </Link>
-         <Link to='/buying' >
-         <li onClick={()=>setMenu("Mua trang in")} className={menu=="Mua trang in"?"active":""}>Mua trang in</li>
-         </Link>
-         <Link to='/history' >
-         <li onClick={()=>setMenu("Lịch sử")} className={menu=="Lịch sử"?"active":""}>Lịch sử</li> 
-         </Link>
-      </ul>
-      <div className="navbar-right">
-        <button className="notification-button">
-          <img src={asset.notif} alt="Notification Icon" className="notif" />
-        </button>
-        <div className="user-avatar">S</div>
-        <button className="dropdown-button">
-          <img src={asset.arrow} alt="Dropdown Icon" className="dropdown-icon" />
-        </button>
+      <div className={clx("navbar-center")}>
+         {isAuthenticated === true ? 
+         (userType === 'student' ? 
+          (<ul className={clx('list')}>
+            <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student'>Trang chủ</Link></li>
+            <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student/print'>In tài liệu</Link></li>
+            <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student/buy'>Mua trang in</Link></li>
+            <li className={clx('nav-item')}><Link className={clx('nav-link')} to='student/history'>Lịch sử</Link></li>
+          </ul>)
+         :(<ul className={clx('list')} >
+          <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso'>Trang chủ</Link></li>
+          <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso/manage'>Quản lý máy in</Link></li>
+          <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso/config'>Cấu hình</Link></li>
+          <li className={clx('nav-item')}><Link className={clx('nav-link')} to='spso/history'>Lịch sử</Link></li>
+        </ul>))
+         :(<ul className={clx('list')} ></ul>)}
       </div>
+      {isAuthenticated === true ? 
+      (
+        <div className={clx("navbar-right")}>
+          <button className={clx("user-button")}>
+            <FontAwesomeIcon icon={faBell} className={clx('icon')}/>
+          </button>
+          <div className={clx("user-avatar")}>{userName}</div>
+          <button className={clx("user-button")}>
+            <FontAwesomeIcon icon={faChevronDown} className={clx('icon')}/>
+          </button>
+        </div>
+      )
+      :(
+        <div className={clx("navbar-right")}>
+          <Link to='/auth/role' className={clx('login-btn')}>Đăng nhập</Link>
+        </div>
+      )}
     </div>
   );
 }
