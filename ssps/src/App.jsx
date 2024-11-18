@@ -7,10 +7,10 @@ import { Route, Routes } from 'react-router-dom'
 const App = () => {
   return (
     <div className='app'>
-      <Navbar/>
+      <Navbar isAuthenticated={true} userType={'spso'} userName={'T'}/>
         <Routes>
           <Route path='/login' element={<Login/>}/>
-        <Route path='/homepage' element={<Homepage/>} />
+          <Route path='/homepage' element={<Homepage/>} />
        </Routes>  
     </div>
   )
