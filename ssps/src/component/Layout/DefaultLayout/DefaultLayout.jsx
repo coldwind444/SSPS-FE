@@ -7,7 +7,7 @@ const clx = classNames.bind(styles);
 function DefaultLayout({children}){
     return (
         <div className={clx('wrapper')}>
-            <Navbar/>
+            <Navbar isAuthenticated={true} userType={'student'} userName={'T'}/>
             <div className={clx('content')}>
                 {children}
             </div>
