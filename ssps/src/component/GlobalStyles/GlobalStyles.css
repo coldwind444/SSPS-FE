@@ -4,6 +4,7 @@
 :root {
     --primary: #1488d8; 
     --dark: #000;
+    --default-background-color: #F3F4F6;
 }
 
 html {
