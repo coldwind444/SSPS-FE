@@ -117,6 +117,10 @@ span {
     color: #FF5500;
 }
 
+.default-theme {
+    color: gray;
+}
+
 .props-container {
     display: flex;
     flex-direction: column;
@@ -187,6 +191,7 @@ span {
     border: none;
     cursor: text;
     padding-left: 20px;
+    background-color: transparent;
 }
 
 .copies-box {
@@ -278,6 +283,15 @@ span {
     cursor: pointer;
 }
 
+.round-btn.disabled {
+    opacity: 0.8;
+    cursor: default;
+}
+
+.round-btn.disabled:hover {
+    opacity: 0.8;
+}
+
 .round-btn:hover {
     opacity: 0.8;
 }
@@ -301,6 +315,8 @@ span {
 .number-box:focus-within {
     border-color: var(--primary);
 }
+
+/* pop-up box css*/
 
 .popup {
     position: fixed;
@@ -371,7 +387,6 @@ span {
 }
 
 .popup-content h2 {
-    color: var(--red);
     font-weight: 700;
 }
 
@@ -408,3 +423,19 @@ span {
     opacity: 1;
 }
 
+/* end pop-up css */
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    border: none;
+}
+
+.failure {
+    color: var(--red);
+}
+
+.success {
+    color: var(--green);
+}
