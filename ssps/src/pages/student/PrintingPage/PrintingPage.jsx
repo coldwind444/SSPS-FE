@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from './PrintingPage.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudArrowUp, faFileExcel, faFilePdf, faFilePowerpoint, faFileWord, faImages } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faCloudArrowUp, faFileExcel, faFilePdf, faFilePowerpoint, faFileWord, faImages, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const clx = classNames.bind(styles)
 
 function PrintingPage(){
     const [file, setFile] = useState(null);
+    const [side, setSide] = useState(1);
+    const [popup, setPopup] = useState(false);
 
     const printers = ['001 - CS2 - H6 - Tầng 1', '002 - CS2 - H6 - Tầng 1', '003 - CS2 - H6 - Tầng 1' ];
 
@@ -45,16 +48,33 @@ function PrintingPage(){
         },
     }
 
-    useEffect(() => {
-        console.log(file);
-    }, [file])
-
     const showFile = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile){
             setFile(selectedFile);
         }
     }
+
+    const openPopupBox = () => {
+        setPopup(true); // Open the popup
+    };
+
+    const closePopupBox = () => {
+        setPopup(false); // Close the popup
+    };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault(); // Prevent the default form submission
+        
+        // Check conditions before opening the popup
+        if (file === null) {
+            openPopupBox();
+        } else if (!['image/png', 'image/jpg', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'].includes(file.type)) {
+            openPopupBox();
+        } else if (file.size > 100 * 1024 * 1024) { // 100MB limit
+            openPopupBox();
+        } 
+    };
 
     return (
         <div className={clx('wrapper')}>
@@ -82,7 +102,7 @@ function PrintingPage(){
             </div>
             <div className={clx('props-container')}>
                 <h2>Thuộc tính trang in</h2>
-                <form className={clx('props-form')}>
+                <form className={clx('props-form')} onSubmit={(e) => handleFormSubmit(e)}>
                     <div className={clx('printer-field')}>
                         <label htmlFor="printer-cb" className={clx('input-label', 'text-bold')}>Chọn máy in</label>
                         <div className={clx('combo-box', 'width-large')} >
@@ -117,14 +137,16 @@ function PrintingPage(){
                     <div className={clx('print-field')}>
                         <div className={clx('copies-box')}>
                             <label htmlFor="copies-nbox" className={clx('input-label', 'text-bold')}>Số bản in</label>
-                            <div className={clx('number-box', 'width-medium')}  ><input type="number" id="copies-nbox"/></div>
+                            <div className={clx('number-box', 'width-medium')}>
+                                <input type="number" id="copies-nbox" defaultValue={1} min={1} required/>
+                            </div>
                         </div>
                         <div className={clx('radio-box')}>
-                            <input type="radio" id='radio1'/>
+                            <input className={clx('radio-input')} onChange={() => {setSide(1)}} checked={side === 1} type="radio" id='radio1'/>
                             <label className={clx('input-label', 'text-bold')} htmlFor="radio1">In 1 mặt</label>
                         </div>
                         <div className={clx('radio-box')}>
-                            <input type="radio" id="radio2"/>
+                            <input className={clx('radio-input')} onChange={() => {setSide(2)}} checked={side === 2} type="radio" id="radio2"/>
                             <label className={clx('input-label', 'text-bold')} htmlFor="radio2">In 2 mặt</label>
                         </div>
                     </div>
@@ -133,29 +155,54 @@ function PrintingPage(){
                         <div className={clx('margin-lr')}>
                             <div className={clx('margin-nbox')}>
                                 <label htmlFor="lmargin-box" className={clx('input-label', 'text-normal')}>Trái</label>
-                                <div className={clx('number-box', 'small')} ><input type="number" id='lmargin-box'/></div>
+                                <div className={clx('number-box', 'small')}>
+                                    <input type="number" id='lmargin-box' defaultValue={0} min={0} step={0.25} required/>
+                                    <label className={clx('unit')} htmlFor="lmargin-box">inches</label>
+                                </div>
                             </div>
                             <div className={clx('margin-nbox')}>
                                 <label htmlFor="rmargin-box" className={clx('input-label', 'text-normal')}>Phải</label>
-                                <div className={clx('number-box', 'small')} ><input type="number" id='rmargin-box'/></div>
+                                <div className={clx('number-box', 'small')} >
+                                    <input type="number" id='rmargin-box' defaultValue={0} min={0} step={0.25} required/>
+                                    <label className={clx('unit')} htmlFor="rmargin-box">inches</label>
+                                </div>
                             </div>
                         </div>
                         <div className={clx('margin-tb')}>
                             <div className={clx('margin-nbox')}>
                                 <label htmlFor="tmargin-box" className={clx('input-label', 'text-normal')}>Trên</label>
-                                <div className={clx('number-box', 'small')} ><input type="number" id='tmargin-box'/></div>
+                                <div className={clx('number-box', 'small')} >
+                                    <input type="number" id='tmargin-box' defaultValue={0} min={0} step={0.25} required/>
+                                    <label className={clx('unit')} htmlFor="tmargin-box">inches</label>
+                                </div>
                             </div>
                             <div className={clx('margin-nbox')}>
                                 <label htmlFor="bmargin-box" className={clx('input-label', 'text-normal')}>Dưới</label>
-                                <div className={clx('number-box', 'small')} ><input type="number" id='bmargin-box'/></div>
+                                <div className={clx('number-box', 'small')} >
+                                    <input type="number" id='bmargin-box' defaultValue={0}  min={0} step={0.25} required/>
+                                    <label className={clx('unit')} htmlFor="bmargin-box">inches</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className={clx('btn-field')}>
                         <button className={clx('round-btn', 'cancel')}>Hủy</button>
-                        <button className={clx('round-btn', 'confirm')}>In</button>
+                        <button type="submit" className={clx('round-btn', 'confirm')}>In</button>
                     </div>
                 </form>
+            </div>
+            <div className={clx('popup', {'visible': popup, 'collapse': !popup, 'active': popup})}>
+                <div className={clx('popup-overlay')}></div>
+                <div className={clx('popup-content')}>
+                    <button>
+                        <FontAwesomeIcon icon={faClose} onClick={closePopupBox}/>
+                    </button>
+                    <FontAwesomeIcon className={clx('popup-icon')} icon={faTriangleExclamation}/>
+                    <h2>LỖI TẢI TỆP TIN</h2>
+                    <p>Định dạng tệp tin không được hỗ trợ
+                        hoặc vượt quá dung lượng cho phép ! </p>
+                    <Link onClick={closePopupBox} className={clx('popup-btn')}>Thử lại</Link>
+                </div>
             </div>
         </div>
     )
