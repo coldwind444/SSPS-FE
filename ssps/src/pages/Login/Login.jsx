@@ -1,4 +1,9 @@
-function Login() {
+import React from 'react'
 
+function Login() {
+  return (
+    <div>concu</div>
+  )
 }
-export default Login;
+
+export default Login
