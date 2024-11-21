@@ -1,11 +1,12 @@
 .homepage {
   position: relative;
-  
+  overflow: hidden;
 }
 
 .background-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
   
 }
 .content {
@@ -30,6 +31,11 @@
   box-shadow: 0 0 5px 10px rgb(250, 249, 249,1);
   
 }
+p {
+  margin: 20px 0;
+  padding-bottom: 20px;
+}
+
 .cta-button {
   text-decoration: none;
   border: solid 2px white;
@@ -38,7 +44,8 @@
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
   font-weight: 600;
-  cursor: pointer; 
+  cursor: pointer;
+  
   transition: background-color 0.1s ease-in;
 }
 .cta-button:hover {
