@@ -6,7 +6,6 @@
 .background-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
   
 }
 .content {
@@ -45,7 +44,6 @@ p {
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  
   transition: background-color 0.1s ease-in;
 }
 .cta-button:hover {

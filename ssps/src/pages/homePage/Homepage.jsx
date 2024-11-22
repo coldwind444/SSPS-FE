@@ -33,7 +33,7 @@ const Homepage = () => {
       <p >
       Hệ thống in ấn dành riêng cho sinh viên Bách Khoa, giúp tiết <br/>kiệm chi phí, thời gian mà vẫn đảm bảo chất lượng. In tài liệu mọi <br/>lúc, mọi nơi chỉ với một cú click chuột !
       </p>
-      <Link to='/auth/role' className={clx('cta-button')}>In ngay</Link>
+      <Link to='/auth' className={clx('cta-button')}>In ngay</Link>
     </div>
             </div>
         </div>

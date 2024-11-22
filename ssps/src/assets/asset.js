@@ -5,6 +5,8 @@ import imagebk from '../assets/bk_bg_login2.png'
 import homeBackground from'../assets/Trang chủ 1 - student.png'
 import sspsIcon from '../assets/ssps_icon.png'
 import bklogin from '../assets/bk_bg_login2.png'
+import student from '../assets/Graduation Cap.png'
+import ssps from '../assets/Member.png'
 export const asset={
     notif,
     logo,
@@ -13,4 +15,6 @@ export const asset={
     homeBackground,
     sspsIcon,
     bklogin,
+    student,
+    ssps,
 }

@@ -4,9 +4,12 @@ import classNames from 'classnames/bind'
 import styles from './Login.module.css';
 import { asset } from '../../assets/asset'
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import AuthLayout from '../../component/Layout/AuthLayout/AuthLayout';
 const clx = classNames.bind(styles)
 function Login() {
+  const location = useLocation();
+  const userType = location.state?.userType || 'unknown';
   return (
     <AuthLayout>
       <div className={clx('loginform')}>
@@ -22,7 +25,8 @@ function Login() {
             className={clx("ssps")}
              />
             </span>
-            <h1 className={clx('the')} style={{fontSize: '50px'}}> Đăng Nhập </h1>
+            <h1 className={clx('the')} style={{fontSize: '50px'}}> Đăng Nhập <b>{userType}</b> </h1>
+           
             <div className={clx('form')}>
             <form className={clx('form-login')}>
             <div className={clx('input-group')}>
