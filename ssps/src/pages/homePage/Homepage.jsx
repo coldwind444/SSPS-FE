@@ -23,7 +23,7 @@ const Homepage = () => {
         TRƯỜNG ĐẠI HỌC BÁCH KHOA TP.HCM
       </h1>
       <p >
-      Hệ thống in ấn dành riêng cho sinh viên Bách Khoa, giúp tiết <br/>kiệm chi phí, thời gian mà vẫn đảm bảo chất lượng. In tài liệu mọi <br/>lúc, mọi nơi chỉ với một cú click chuột !
+      Hệ thống in ấn dành riêng cho sinh viên Bách Khoa, giúp tiết <br/>kiệm chi phí, thời gian mà vẫn đảm bảo chất lượng. <br/> In tài liệu mọi lúc, mọi nơi chỉ với một cú click chuột !
       </p>
       <Link to='/auth' className={clx('cta-button')}>In ngay</Link>
     </div>

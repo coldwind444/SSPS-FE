@@ -19,7 +19,7 @@ function Role() {
             className={clx("ssps")}
              />
             </span>
-            <h1 className={clx('the')} style={{fontSize: '50px'}}> may biet bo may la ai k </h1>
+            <h1 className={clx('the')} style={{fontSize: '50px'}}> Bạn là ai </h1>
             <div className={clx('choose')}>
                  <Link to="/login" 
                        state={{ userType: 'student' }}>
