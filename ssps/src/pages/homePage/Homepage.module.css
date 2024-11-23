@@ -1,13 +1,12 @@
-.homepage {
+.wrapper {
   position: relative;
-  overflow: hidden;
+  background-size: cover;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url('../../assets/Trang chủ 1 - student.png');
 }
 
-.background-img {
-  width: 100%;
-  height: auto;
-  
-}
 .content {
   position: absolute;
   top: 50%;

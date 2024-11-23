@@ -10,15 +10,7 @@ const clx = classNames.bind(styles)
 const Homepage = () => {
   return (
     <div className={clx('wrapper')}>
-            <Navbar/>
-    <div className={clx("homepage")}>
-    <div className={clx("background")}>
-      <img
-        src={asset.homeBackground} 
-        alt="Trường Đại học Bách Khoa"
-        className={clx("background-img")}
-      />
-    </div>
+    <Navbar/>
     <div className={clx("content")}>
         <img
           src={asset.sspsIcon} 
@@ -35,8 +27,7 @@ const Homepage = () => {
       </p>
       <Link to='/auth' className={clx('cta-button')}>In ngay</Link>
     </div>
-            </div>
-        </div>
+     </div>
    
   )
 }

@@ -42,6 +42,11 @@
     cursor: pointer;
     margin-bottom: 30px;
   }
+  .student:hover,.sspo:hover,.sspo:focus,
+.student:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em white;
+  transform: translateY(-0.25em);
+}
   .sspo{
     width: 100%;
     text-decoration: none;
