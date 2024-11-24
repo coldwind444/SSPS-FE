@@ -1,6 +1,5 @@
 import React from "react";
 import "./PrintHistory.css";
-import Navbar from "../../component/NavigationBar/Navbar";
 import { Link } from "react-router-dom";
 
 function SearchBar() {
@@ -97,7 +96,6 @@ function Pagination() {
 function HistoryPage() {
   return (
     <div>
-      <Navbar />
       <div className="history-page">
         <h2>LỊCH SỬ IN</h2>
         <SearchBar />

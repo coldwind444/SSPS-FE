@@ -3,7 +3,6 @@ import "./Purchase.css";
 import SuccessPopup from "./SuccessPopup";
 import FailurePopup from "./FailurePopup";
 import RechargePopup from "./RechargePopup";
-import Navbar from "../../component/NavigationBar/Navbar";
 import { Link } from "react-router-dom";
 
 const Purchase = () => {
@@ -48,7 +47,6 @@ const Purchase = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="purchase-section">
         <h2 className="title">MUA TRANG IN</h2>
         <div className="info">
