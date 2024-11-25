@@ -1,0 +1,51 @@
+.concu{
+    position: relative;
+    background-size: cover;
+    height: 89vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/Trang chủ 1 - student.png');
+}
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+  
+  .logoin {
+    width: 50px; 
+    height: 50px; 
+    background-color: #F0FFFF; 
+    border-radius: 15px; 
+    box-shadow: 0 0 5px 10px rgb(250, 249, 249,1);
+    
+  }
+  p {
+    margin: 20px 0;
+    padding-bottom: 20px;
+  }
+  
+  .cta-button {
+    text-decoration: none;
+    border: solid 2px white;
+    background-color:#1488D8;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in;
+  }
+  .cta-button:hover {
+    background-color:white;
+    color: #1488D8;
+  }

@@ -1,9 +1,9 @@
 import React from 'react'
 import './Login.module.css'
 import classNames from 'classnames/bind'
-import styles from './Login.module.css';
+import styles from './Login.module.css'
 import { asset } from '../../assets/asset'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 import AuthLayout from '../../component/Layout/AuthLayout/AuthLayout';
 const clx = classNames.bind(styles)
@@ -26,7 +26,6 @@ function Login() {
              />
             </span>
             <h1 className={clx('the')} style={{fontSize: '50px'}}> Đăng Nhập <b>{userType}</b> </h1>
-           
             <div className={clx('form')}>
             <form className={clx('form-login')}>
             <div className={clx('input-group')}>

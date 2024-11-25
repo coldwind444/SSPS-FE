@@ -2,7 +2,10 @@ import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Role.module.css';
 import { asset } from '../../assets/asset'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
+import {faUserGroup} from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 const clx = classNames.bind(styles)
 function Role() {
   return (
@@ -23,21 +26,15 @@ function Role() {
             <div className={clx('choose')}>
                  <Link to="/login" 
                        state={{ userType: 'student' }}>
-                      <button type="submit"className={clx('student')}>
-                      <img src={asset.student} 
-                       alt="student"
-                       className={clx('student-butt')}
-                       />
+                      <button type="submit"className={clx('butt')}>
+                       <FontAwesomeIcon icon={faGraduationCap} className={clx('icon')}/>
                       <span>Sinh Viên</span>
                       </button>
                   </Link>
                   <Link  to="/login" 
                        state={{ userType: 'sspo' }}>
-                      <button type="submit" className={clx('sspo')} >
-                      <img src={asset.ssps} 
-                      alt="ssps"
-                      className={clx('ssps-butt')}
-                     />
+                      <button type="submit" className={clx('butt')} >
+                      <FontAwesomeIcon icon={faUserGroup} className={clx('iconsp')}/>
                      <span> SPSO</span>
                      </button>
                   </Link>
