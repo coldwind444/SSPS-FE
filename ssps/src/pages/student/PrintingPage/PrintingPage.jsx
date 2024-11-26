@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from './PrintingPage.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,10 +8,13 @@ import { Link } from "react-router-dom";
 const clx = classNames.bind(styles)
 
 function PrintingPage(){
+    const fileInputRef = useRef();
+
     const [file, setFile] = useState(null);
     const [side, setSide] = useState(1);
     const [popup, setPopup] = useState(false);
     const [popupset, setPopupSet] = useState({});
+    const [fileset, setFileSet] = useState({icon: faFile, theme: 'default-theme'});
 
     const printers = ['001 - CS2 - H6 - Tầng 1', '002 - CS2 - H6 - Tầng 1', '003 - CS2 - H6 - Tầng 1' ];
 
@@ -80,7 +83,20 @@ function PrintingPage(){
         const selectedFile = e.target.files[0];
         if (selectedFile){
             setFile(selectedFile);
+            if (iconMap[selectedFile.type]){
+                setFileSet(iconMap[selectedFile.type]);
+            } else {
+                setFileSet({icon: faFile, theme: 'default-theme'})
+            }
         } 
+    }
+
+    const clearFile = () => {
+        setFile(null);
+        setFileSet({icon: faFile, theme: 'default-theme'});
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
     }
 
     const openPopupBox = () => {
@@ -122,12 +138,12 @@ function PrintingPage(){
                     </div>
                 ):(
                     <div className={clx('file-area')}>
-                        <FontAwesomeIcon icon={iconMap[file.type] ? iconMap[file.type].icon : faFile} className={clx('file-icon',iconMap[file.type] ? iconMap[file.type].theme : 'default-theme')}/>
+                        <FontAwesomeIcon icon={fileset.icon} className={clx('file-icon', fileset.theme)}/>
                         <a download={file.name} href={URL.createObjectURL(file)} className={clx('file-name')}>{file.name}</a>
                     </div>
                 )}
                 <div className={clx('file-input')}>
-                    <input onChange={(e) => showFile(e)} type="file" id='file' className={clx("file-input__input")}/>
+                    <input ref={fileInputRef} onChange={(e) => showFile(e)} type="file" id='file' className={clx("file-input__input")}/>
                     <label htmlFor="file" className={clx("file-input__label")}>
                         Tải lên
                     </label>
@@ -220,7 +236,7 @@ function PrintingPage(){
                             </div>
                         </div>
                         <div className={clx('btn-field')}>
-                            <button type="button" onClick={() => setFile(null)} className={clx('round-btn', 'cancel', {'disabled': file === null})}>Hủy</button>
+                            <button type="button" onClick={clearFile} className={clx('round-btn', 'cancel', {'disabled': file === null})}>Hủy</button>
                             <button type="submit" className={clx('round-btn', 'confirm', {'disabled': file === null})}>In</button>
                         </div>
                     </fieldset>
