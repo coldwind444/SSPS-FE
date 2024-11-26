@@ -27,13 +27,13 @@ function Navbar({isAuthenticated, userType, userName}) {
             <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student'>Trang chủ</Link></li>
             <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student/print'>In tài liệu</Link></li>
             <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student/buy'>Mua trang in</Link></li>
-            <li className={clx('nav-item')}><Link className={clx('nav-link')} to='student/history'>Lịch sử</Link></li>
+            <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/student/history'>Lịch sử</Link></li>
           </ul>)
          :(<ul className={clx('list')} >
           <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso'>Trang chủ</Link></li>
           <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso/manage'>Quản lý máy in</Link></li>
           <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso/config'>Cấu hình</Link></li>
-          <li className={clx('nav-item')}><Link className={clx('nav-link')} to='spso/history'>Lịch sử</Link></li>
+          <li className={clx('nav-item')}><Link className={clx('nav-link')} to='/spso/history'>Lịch sử</Link></li>
         </ul>))
          :(<ul className={clx('list')} ></ul>)}
       </div>
