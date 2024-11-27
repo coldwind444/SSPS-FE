@@ -28,34 +28,53 @@
 .form-login {
   width: 100%;
   max-width: 400px;
+  margin-bottom: 60px;
 }
 
 .input-group {
-  margin-bottom: 15px;
+  position: relative;
+  margin-bottom: 30px;
+  width: 160%;
 }
 
 .input-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: normal;
-}
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  color: rgb(6, 127, 232);
+  padding: 0 10px;
+  font-weight: 400;
+ pointer-events: none;
+ transition: top .4s;
+ text-transform: capitalize;
+} 
 
 .input-group input {
-  width: 150%;
-  height: 100%;
+  border: 1px solid #1488D8;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  width: 100%;
+
 }
-.input-group input:focus,
-.input-group input:hover {
-  background-color: #f4f3f3;
-  box-shadow: 0 0 5px rgba(244, 243, 243, 0.9); 
+.input-group input:placeholder-shown + label {
+  top:50%; 
+  transform: translateY(-50%);
+  font-size: 16px; 
+}
+.input-group input:not(:placeholder-shown) + label,
+.input-group input:focus + label {
+  top: -12px;
+  transform: translateY(0);
+  font-size: 14px;
+  border: white;
+
+  background-color: white;
 }
 .login-button {
   width: 160%;
   text-decoration: none;
+  font-weight: 400;
   border: solid 2px white;
   background-color:#1488D8;
   color: white;
@@ -70,14 +89,7 @@
 .login-button:hover {
   background-color: #044b97;
 }
-label{
-  position: absolute;
-  background: #fff;
-  padding: 0 5px;
-  font-size: 15px;
-  color: #000;
-  transform: translate(10px, -10px);
-}
+
 .form{
   position: relative;
   left: 120px;

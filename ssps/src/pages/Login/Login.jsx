@@ -29,21 +29,23 @@ function Login() {
             <div className={clx('form')}>
             <form className={clx('form-login')}>
             <div className={clx('input-group')}>
-            <label >Tên Đăng Nhập</label>
-            <input
+            <input 
               type="text"
               id="username"
               name="username"
+              placeholder=" "
             />
+            <label >Tên Đăng Nhập</label>
           </div>
           <div className={clx('input-group')}>
-            <label ></label>
-            <input
+          <input
               type="password"
               id="password"
               name="password"
-              placeholder="Mật khẩu"
+              placeholder=" "
             />
+            <label>Mật Khẩu</label>
+           
           </div>
           <button type="submit" className={clx('login-button')}>
             Đăng nhập

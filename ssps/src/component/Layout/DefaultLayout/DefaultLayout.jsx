@@ -9,7 +9,7 @@ function DefaultLayout({children}){
     const isHome = location.pathname === '/student'; 
     return (
         <div className={clx('wrapper')}>
-            <Navbar/>
+             <Navbar />
             <div className={isHome ? clx('homeContent') : clx('content')}>
                 {children}
             </div>
