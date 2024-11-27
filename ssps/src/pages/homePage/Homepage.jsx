@@ -1,7 +1,6 @@
 import React from 'react'
-import './Homepage.module.css'
 import classNames from 'classnames/bind'
-import styles from './Homepage.module.css';
+import styles from './HomePage.module.css';
 import { asset } from '../../assets/asset'
 import { Link } from 'react-router-dom';
 const clx = classNames.bind(styles)
