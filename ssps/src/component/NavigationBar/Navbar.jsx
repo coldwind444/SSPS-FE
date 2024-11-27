@@ -51,7 +51,7 @@ function Navbar({isAuthenticated, userType, userName}) {
       )
       :(
         <div className={clx("navbar-right")}>
-          <Link to='/auth/role' className={clx('login-btn')}>Đăng nhập</Link>
+          <Link to='/auth' className={clx('login-btn')}>Đăng nhập</Link>
         </div>
       )}
     </div>
