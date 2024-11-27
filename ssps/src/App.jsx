@@ -1,29 +1,34 @@
 import React from 'react'
-import Navbar from './component/NavigationBar/Navbar'
-import Homepage from './pages/homePage/Homepage'
-import Login from'./pages/Login/Login'
-import Home from './pages/home/Home'
-import Role from './pages/Login/Role'
-import Config from './pages/SSPO/config/Config'
+import LoginPage from'./pages/LoginPage/LoginPage'
+import RolePage from './pages/LoginPage/RolePage'
+import ConfigPage from './pages/spso/ConfigPage/ConfigPage'
+import PrinterManagementPage from './pages/spso/PrinterManagementPage/PrinterManagementPage'
+import StudentHistoryPage from './pages/student/StudentHistoryPage/StudentHistoryPage'
 import DefaultLayout from './component/Layout/DefaultLayout/DefaultLayout'
 import AuthLayout from './component/Layout/AuthLayout/AuthLayout'
 import PrintingPage from './pages/student/PrintingPage/PrintingPage'
-import HistoryPage from './pages/Student_PrintHistory/PrintHistory'
-import Purchase from './pages/PagePurchase/Purchase'
+import PurchasePage from './pages/student/PurchasePage/PurchasePage'
 import DashBoard from './pages/spso/DashBoard/DashBoard'
 import { Route, Routes } from 'react-router-dom'
+import HomePage from './pages/homePage/Homepage'
 
 const App = () => {
   return (
     <div className='app'>
         <Routes>
-          <Route path='/student/print' element={<DefaultLayout><PrintingPage/></DefaultLayout>}/>
-          <Route path='/auth' element={<AuthLayout></AuthLayout>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/homepage' element={<Homepage/>} />
-          <Route path='/student/history' element={<DefaultLayout><HistoryPage /></DefaultLayout>} />
-          <Route path='/student/buy' element={<DefaultLayout><Purchase /></DefaultLayout>} />  
-          <Route path='/spso' element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>                  
+        <Route path='/' element={<DefaultLayout isAuthenticated={false}><HomePage/></DefaultLayout>}/>
+          <Route path='/login' element={<AuthLayout><LoginPage/></AuthLayout>}/>
+          <Route path='/role' element={<AuthLayout><RolePage/></AuthLayout>}/>
+
+          <Route path='/student' element={<DefaultLayout isAuthenticated={true} userType={'student'} userName={'N'}><HomePage/></DefaultLayout>}/>
+          <Route path='/student/print' element={<DefaultLayout isAuthenticated={true} userType={'student'} userName={'N'}><PrintingPage/></DefaultLayout>}/>
+          <Route path='/student/history' element={<DefaultLayout isAuthenticated={true} userType={'student'} userName={'N'}><StudentHistoryPage /></DefaultLayout>} />
+          <Route path='/student/buy' element={<DefaultLayout isAuthenticated={true} userType={'student'} userName={'N'}><PurchasePage/></DefaultLayout>} />  
+          
+          <Route path='/spso' element = {<DefaultLayout isAuthenticated={true} userType={'spso'} userName={'N'}><DashBoard/></DefaultLayout>}/>       
+          <Route path='/spso/manage' element={<DefaultLayout isAuthenticated={true} userType={'spso'} userName={'N'}><PrinterManagementPage/></DefaultLayout>}/>   
+          <Route path='/spso/config' element={<DefaultLayout isAuthenticated={true} userType={'spso'} userName={'N'}><ConfigPage/></DefaultLayout>}/>    
+          <Route path='/spso/history'/>    
        </Routes>  
     </div>
   )

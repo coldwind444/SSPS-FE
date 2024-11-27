@@ -4,12 +4,12 @@ import Navbar from "../../NavigationBar/Navbar";
 import { useLocation } from 'react-router-dom';
 const clx = classNames.bind(styles);
 
-function DefaultLayout({children}){
+function DefaultLayout({children, isAuthenticated, userType, userName}){
     const location = useLocation();
     const isHome = location.pathname === '/student'; 
     return (
         <div className={clx('wrapper')}>
-            <Navbar isAuthenticated={true} userType={'student'} userName={'T'}/>
+            <Navbar isAuthenticated={isAuthenticated} userType={userType} userName={userName}/>
             <div className={clx('content')}>
                 {children}
             </div>

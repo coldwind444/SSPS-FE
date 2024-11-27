@@ -1,13 +1,15 @@
 import React from 'react'
 import classNames from 'classnames/bind'
-import styles from './Role.module.css';
+import styles from './RolePage.module.css';
 import { asset } from '../../assets/asset'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 import {faUserGroup} from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+
 const clx = classNames.bind(styles)
-function Role() {
+
+function RolePage() {
   return (
       <div className={clx('Role')}>
            <img 
@@ -22,7 +24,7 @@ function Role() {
             className={clx("ssps")}
              />
             </span>
-            <h1 className={clx('the')} style={{fontSize: '50px'}}> Bạn là ai </h1>
+            <h1 className={clx('the')} style={{fontSize: '50px'}}> Bạn là ai ?</h1>
             <div className={clx('choose')}>
                  <Link to="/login" 
                        state={{ userType: 'student' }}>
@@ -43,4 +45,4 @@ function Role() {
   )
 }
 
-export default Role
+export default RolePage;

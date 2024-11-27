@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./PrinterManagement.css";
+import "./PrinterManagementPage.css";
 
-const PrinterManagement = () => {
+function PrinterManagementPage() {
   const [printers, setPrinters] = useState([
     {
       id: "001",
@@ -265,4 +265,4 @@ const PrinterManagement = () => {
   );
 };
 
-export default PrinterManagement;
+export default PrinterManagementPage;

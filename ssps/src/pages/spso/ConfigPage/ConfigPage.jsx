@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import "./Config.module.css";
 import classNames from "classnames/bind";
-import styles from "./Config.module.css";
+import styles from "./ConfigPage.module.css";
 
 const clx = classNames.bind(styles);
 
-const Config = () => {
+function ConfigPage(){
   const [numPages, setNumPages] = useState(20);
   const [inputValue, setInputValue] = useState(""); 
   const [date, setDate] = useState("28-08-2024"); 
@@ -97,4 +96,4 @@ const Config = () => {
   );
 };
 
-export default Config;
+export default ConfigPage;

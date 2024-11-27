@@ -1,5 +1,5 @@
 import React from "react";
-import "./PrintHistory.css";
+import "./StudentHistoryPage.css";
 import { Link } from "react-router-dom";
 
 function SearchBar() {
@@ -93,7 +93,7 @@ function Pagination() {
   );
 }
 
-function HistoryPage() {
+function StudentHistoryPage() {
   return (
     <div>
       <div className="history-page">
@@ -106,4 +106,4 @@ function HistoryPage() {
   );
 }
 
-export default HistoryPage;
+export default StudentHistoryPage;

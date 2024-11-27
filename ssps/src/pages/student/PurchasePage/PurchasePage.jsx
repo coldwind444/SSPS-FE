@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./Purchase.css";
+import "./PurchasePage.css";
 import SuccessPopup from "./SuccessPopup";
 import FailurePopup from "./FailurePopup";
 import RechargePopup from "./RechargePopup";
 import { Link } from "react-router-dom";
 
-const Purchase = () => {
+function PurchasePage() {
   const [pagesToBuy, setPagesToBuy] = useState(10);
   const [totalFee, setTotalFee] = useState(5000);
   const [remainingPages, setRemainingPages] = useState(0);
@@ -106,4 +106,4 @@ const Purchase = () => {
   );
 };
 
-export default Purchase;
+export default PurchasePage;
