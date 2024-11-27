@@ -3,6 +3,7 @@ import styles from './DashBoard.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faCaretUp, faCloudArrowUp, faFile, faPrint } from "@fortawesome/free-solid-svg-icons";
 import { ResponsiveContainer, XAxis, YAxis, BarChart, LineChart, Bar, Line, CartesianGrid, Legend, Tooltip} from 'recharts'
+import { useState } from "react";
 const clx = classNames.bind(styles); 
 
 function DashBoard() {
@@ -15,17 +16,22 @@ function DashBoard() {
     ];
 
     const printersData = [
-        {printer: "Printer_1", times: 84},
-        {printer: "Printer_2", times: 104},
-        {printer: "Printer_3", times: 344},
-        {printer: "Printer_4", times: 281},
-        {printer: "Printer_5", times: 320},
-        {printer: "Printer_6", times: 442},
-        {printer: "Printer_7", times: 325},
-        {printer: "Printer_8", times: 498},
-        {printer: "Printer_9", times: 413},
-        {printer: "Printer_10",times: 156}
+        { printer: "Printer_1", times: 84 },
+        { printer: "Printer_2", times: 104 },
+        { printer: "Printer_3", times: 344 },
+        { printer: "Printer_4", times: 281 },
+        { printer: "Printer_5", times: 320 },
+        { printer: "Printer_6", times: 442 },
+        { printer: "Printer_7", times: 325 },
+        { printer: "Printer_8", times: 498 },
+        { printer: "Printer_9", times: 413 },
+        { printer: "Printer_10",times: 156 }
     ]
+
+    const [accessData, setAccessData] = useState({data: 0, increase: true, progress: 0});
+    const [requestData, setRequestData] = useState({data: 0, increase: true, progress: 0});
+    const [printData, setPrintData] = useState({data: 0, increase: true, progress: 0});
+    const [pageData, setPageData] = useState({data: 0, increase: true, progress: 0});
 
     return (
         <div className={clx('wrapper')}>
@@ -95,16 +101,16 @@ function DashBoard() {
             <div className={clx('printer-graph-container')}>
                 <label className={clx('data-title')}>Biểu đồ tần suất sử dụng máy in</label>
                 <div className={clx('printer-graph')}>
-                <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={printersData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="printer" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="times" fill="orangered" barSize={30} />
-                    </BarChart>
-                </ResponsiveContainer>
+                    <ResponsiveContainer width="100%" height={250}>
+                        <BarChart data={printersData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="printer" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="times" fill="orangered" barSize={30} />
+                        </BarChart>
+                    </ResponsiveContainer>
                 </div>
             </div>
         </div>
