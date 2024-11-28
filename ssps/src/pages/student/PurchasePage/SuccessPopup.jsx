@@ -1,13 +1,24 @@
 import React from "react";
 import "./Popup.css";
 
-const SuccessPopup = ({ onClose }) => {
+const SuccessPopup = ({ onClose, purchasedPages, remainingPages, balance }) => {
   return (
-    <div className="popup">
+    <div className="popup-overlay">
       <div className="popup-content">
-        <h2>Giao dịch thành công!</h2>
-        <p>Số tiền đã được trừ và giao dịch hoàn tất.</p>
-        <button onClick={onClose} className="btn-close">
+        <span className="close-icon" onClick={onClose}>
+          &times;
+        </span>
+        <h2 className="text-success">GIAO DỊCH THÀNH CÔNG</h2>
+        <p>
+          Bạn đã mua thành công <strong>{purchasedPages}</strong> trang in!
+        </p>
+        <p>
+          Số dư ví: <strong>{balance.toLocaleString()}đ</strong>
+        </p>
+        <p>
+          Số trang còn lại: <strong>{remainingPages}</strong>
+        </p>
+        <button className="btn-success" onClick={onClose}>
           Đóng
         </button>
       </div>
