@@ -5,7 +5,7 @@ import FailurePopup from "./FailurePopup";
 import RechargePopup from "./RechargePopup";
 import { Link } from "react-router-dom";
 
-const Purchase = () => {
+const PurchasePage = () => {
   const [pagesToBuy, setPagesToBuy] = useState(10);
   const [totalFee, setTotalFee] = useState(5000);
   const [remainingPages, setRemainingPages] = useState(0);
