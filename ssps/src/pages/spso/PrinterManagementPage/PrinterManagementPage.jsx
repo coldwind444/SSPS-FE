@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./PrinterManagementPage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function PrinterManagementPage() {
   const [printers, setPrinters] = useState([
@@ -76,16 +78,17 @@ function PrinterManagementPage() {
   return (
     <div className="printer-management">
       <header className="header">
-        <h1>Quản Lý Máy In</h1>
+        <h1>Quản lý máy in</h1>
+      </header>
+      <div className="wrapper">
+        <div className="search-bar">
+          <input type="text" placeholder="Tìm kiếm..." className="search-input" />
+        </div>
         <button
           className="add-printer-button"
-          onClick={() => setIsAddModalOpen(true)}
-        >
+          onClick={() => setIsAddModalOpen(true)}>
           Thêm máy in +
         </button>
-      </header>
-      <div className="search-bar">
-        <input type="text" placeholder="Tìm kiếm..." className="search-input" />
       </div>
       <table className="printer-table">
         <thead>
@@ -109,18 +112,18 @@ function PrinterManagementPage() {
                 </span>
               </td>
               <td>
-                <button
-                  className="toggle-button"
-                  onClick={() => toggleStatus(printer.id)}
-                >
-                  {printer.status === "on" ? "Vô hiệu hóa" : "Kích hoạt"}
-                </button>
-                <button
-                  className="update-button"
-                  onClick={() => handleOpenEditModal(printer)}
-                >
-                  Cập nhật
-                </button>
+                <div className="btn-container">
+                  <button
+                    className={`toggle-button ${printer.status === 'on' ? 'off' : 'on'}`}
+                    onClick={() => toggleStatus(printer.id)}>
+                    {printer.status === "on" ? "Vô hiệu hóa" : "Kích hoạt"}
+                  </button>
+                  <button
+                    className="update-button"
+                    onClick={() => handleOpenEditModal(printer)}>
+                    Cập nhật
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
@@ -129,8 +132,8 @@ function PrinterManagementPage() {
       <footer className="footer">
         <span>Hiển thị {printers.length}/180 dòng</span>
         <div className="pagination">
-          <button className="prev-button">Trước</button>
-          <button className="next-button">Sau</button>
+          <button className="prev-button"><FontAwesomeIcon icon={faArrowLeft}/>Trước </button>
+          <button className="next-button">Sau <FontAwesomeIcon icon={faArrowRight}/></button>
         </div>
       </footer>
 
@@ -139,7 +142,7 @@ function PrinterManagementPage() {
         <div className="modal-overlay">
           <div className="modal">
             <div className="modal-header">
-              <h2>Thêm Máy In</h2>
+              <h2>Thêm máy in</h2>
               <button
                 className="close-button"
                 onClick={() => setIsAddModalOpen(false)}
@@ -147,14 +150,14 @@ function PrinterManagementPage() {
                 &times;
               </button>
             </div>
-            <form
+            <form className="printer-form"
               onSubmit={(e) => {
                 e.preventDefault();
                 handleAddPrinter();
               }}
             >
               <div className="form-group">
-                <label htmlFor="newPrinterName">Tên Máy In</label>
+                <label htmlFor="newPrinterName">Tên máy in</label>
                 <input
                   id="newPrinterName"
                   type="text"
@@ -167,7 +170,7 @@ function PrinterManagementPage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="newPrinterLocation">Vị Trí</label>
+                <label htmlFor="newPrinterLocation">Vị trí</label>
                 <input
                   id="newPrinterLocation"
                   type="text"
