@@ -7,6 +7,7 @@ import AuthLayout from './component/Layout/AuthLayout/AuthLayout'
 import PrintingPage from './pages/student/PrintingPage/PrintingPage'
 import HistoryPage from './pages/Student_PrintHistory/PrintHistory'
 import Purchase from './pages/PagePurchase/Purchase'
+import DashBoard from './pages/spso/DashBoard/DashBoard'
 import { Route, Routes } from 'react-router-dom'
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
           <Route path='/login' element={<Login/>}/>
           <Route path='/homepage' element={<Homepage/>} />
           <Route path='/student/history' element={<DefaultLayout><HistoryPage /></DefaultLayout>} />
-          <Route path='/student/buy' element={<DefaultLayout><Purchase /></DefaultLayout>} />                    
+          <Route path='/student/buy' element={<DefaultLayout><Purchase /></DefaultLayout>} />  
+          <Route path='/spso' element = {<DefaultLayout><DashBoard/></DefaultLayout>}/>                  
        </Routes>  
     </div>
   )
